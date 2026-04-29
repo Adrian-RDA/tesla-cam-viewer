@@ -2,8 +2,6 @@
 
 A modern, GPU-accelerated dashcam viewer for Tesla SavedClips footage on Windows.
 
-![Screenshot](docs/screenshot.png)
-
 ## Features
 
 - **4-camera grid** — Front, Back, Left and Right Repeater in a live NVR-style view
