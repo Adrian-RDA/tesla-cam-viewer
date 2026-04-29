@@ -89,13 +89,20 @@ class MainWindow(QMainWindow):
 
         h_layout.addStretch()
 
-        # Centre: camera info when maximised (styled as a pill badge)
+        # Centre: camera info when maximised — no background widget, just labels
+        # Wrap in a plain transparent container so setVisible() hides all at once
         self._cam_badge = QWidget()
         self._cam_badge.setObjectName("camBadge")
         self._cam_badge.setVisible(False)
+        self._cam_badge.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
+        self._cam_badge.setAutoFillBackground(False)
         badge_layout = QHBoxLayout(self._cam_badge)
-        badge_layout.setContentsMargins(12, 0, 12, 0)
-        badge_layout.setSpacing(8)
+        badge_layout.setContentsMargins(0, 0, 0, 0)
+        badge_layout.setSpacing(6)
+
+        # Small accent dot to the left of the name
+        self._cam_dot = QLabel("●")
+        self._cam_dot.setObjectName("camDotLabel")
 
         self._cam_name_lbl = QLabel("")
         self._cam_name_lbl.setObjectName("camNameLabel")
@@ -106,6 +113,7 @@ class MainWindow(QMainWindow):
         self._cam_hint_lbl = QLabel("Doppelklick zum Zurückschalten")
         self._cam_hint_lbl.setObjectName("camHintLabel")
 
+        badge_layout.addWidget(self._cam_dot)
         badge_layout.addWidget(self._cam_name_lbl)
         badge_layout.addWidget(sep)
         badge_layout.addWidget(self._cam_hint_lbl)
@@ -113,12 +121,13 @@ class MainWindow(QMainWindow):
         h_layout.addWidget(self._cam_badge)
         h_layout.addStretch()
 
-        # Right spacer (mirrors left buttons to keep badge centred)
-        _right = QWidget()
-        _right.setFixedWidth(
-            self._btn_toggle.width() + self._btn_open.sizeHint().width() + 6
+        # Right invisible spacer — use addSpacing (no widget, no background) to
+        # mirror the left buttons and keep the badge optically centred
+        h_layout.addSpacing(
+            self._btn_toggle.sizeHint().width()
+            + self._btn_open.sizeHint().width()
+            + 6
         )
-        h_layout.addWidget(_right)
 
         # ── Status bar ─────────────────────────────────────────────────
         self._status = QStatusBar()

@@ -248,28 +248,33 @@ QPushButton#speedSegBtn:pressed {
     color: #ffffff;
 }
 
-/* ── Maximised-camera badge (pill in header centre) ─────────────────────── */
+/* ── Maximised-camera badge (inline, no pill background) ────────────────── */
 QWidget#camBadge {
-    background: #1a1a1a;
-    border: 1px solid #2a2a2a;
-    border-radius: 14px;
+    background: transparent;
+    border: none;
+}
+
+QLabel#camDotLabel {
+    color: #e31937;
+    font-size: 8px;
+    background: transparent;
 }
 
 QLabel#camNameLabel {
-    color: #f0f0f0;
+    color: #e8e8e8;
     font-size: 12px;
     font-weight: 700;
     background: transparent;
 }
 
 QLabel#camSepLabel {
-    color: #444444;
+    color: #383838;
     font-size: 13px;
     background: transparent;
 }
 
 QLabel#camHintLabel {
-    color: #606060;
+    color: #505050;
     font-size: 11px;
     background: transparent;
 }
