@@ -16,6 +16,8 @@ a = Analysis(
         # Ship the QSS theme and app icon alongside the executable
         (str(ROOT / "resources" / "style.qss"), "resources"),
         (str(ROOT / "resources" / "icon.png"),  "resources"),
+        # Third-party license notices (LGPL compliance)
+        (str(ROOT / "LICENSES"),                "LICENSES"),
     ],
     hiddenimports=[
         # Qt Multimedia — needed for QMediaPlayer / QVideoWidget

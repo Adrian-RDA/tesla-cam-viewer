@@ -63,6 +63,19 @@ if (Test-Path "$outDir\TeslaCamViewer.exe") {
     Write-Host ""
     Write-Host "  Build successful!" -ForegroundColor Green
     Write-Host "  Output: $outDir" -ForegroundColor Green
+
+    # ── LGPL compliance reminder ─────────────────────────────────────────────
+    $missing = @()
+    if (-not (Test-Path "$Root\LICENSES\LGPL-2.1.txt")) { $missing += "LGPL-2.1.txt  (FFmpeg)" }
+    if (-not (Test-Path "$Root\LICENSES\LGPL-3.0.txt")) { $missing += "LGPL-3.0.txt  (Qt / PySide6)" }
+    if (-not (Test-Path "$Root\LICENSES\Apache-2.0.txt")) { $missing += "Apache-2.0.txt (OpenSSL)" }
+
+    if ($missing.Count -gt 0) {
+        Write-Host ""
+        Write-Host "  ⚠  LGPL compliance: add these license texts to LICENSES/ before distributing:" -ForegroundColor Yellow
+        foreach ($f in $missing) { Write-Host "       • $f" -ForegroundColor Yellow }
+        Write-Host "     Texts: https://www.gnu.org/licenses/" -ForegroundColor Yellow
+    }
     Write-Host ""
 } else {
     Write-Error "Build failed — TeslaCamViewer.exe not found in $outDir"

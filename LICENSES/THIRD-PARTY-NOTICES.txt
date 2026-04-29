@@ -1,0 +1,98 @@
+TeslaCam Viewer — Third-Party Software Notices
+===============================================
+
+This application includes or links against the following third-party libraries.
+Their licenses are reproduced below in full.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Qt / PySide6
+   Files: Qt6*.dll, PySide6*.dll, shiboken6*.dll
+   Copyright (C) The Qt Company Ltd.
+   License: GNU Lesser General Public License v3.0 (LGPL-3.0)
+
+   This application uses Qt and PySide6 as dynamically linked libraries.
+   You may replace these libraries with compatible versions of your choice.
+   Source code for Qt is available at https://code.qt.io/
+   Source code for PySide6 is available at https://code.qt.io/cgit/pyside/pyside-setup.git/
+
+   Full license text: LICENSES/LGPL-3.0.txt
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+2. FFmpeg
+   Files: avcodec-61.dll, avformat-61.dll, avutil-59.dll,
+          swscale-8.dll, swresample-5.dll, ffmpegmediaplugin.dll
+   Copyright (C) 2000-2024 the FFmpeg developers
+   License: GNU Lesser General Public License v2.1 (LGPL-2.1)
+
+   These libraries are included as part of the Qt Multimedia module's
+   FFmpeg backend. They are dynamically linked and can be replaced with
+   any LGPL-compatible build of FFmpeg.
+   Source code: https://ffmpeg.org/download.html
+   Qt's FFmpeg integration: https://code.qt.io/cgit/qt/qtmultimedia.git/
+
+   Full license text: LICENSES/LGPL-2.1.txt
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+3. OpenSSL
+   Files: libcrypto-3-x64.dll, libssl-3-x64.dll,
+          libcrypto-3.dll, libssl-3.dll
+   Copyright (C) 1998-2024 The OpenSSL Project Authors
+   License: Apache License 2.0
+
+   These libraries are included as Qt dependencies for network security.
+   Source code: https://github.com/openssl/openssl
+
+   Full license text: LICENSES/Apache-2.0.txt
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+4. libffi
+   Files: libffi-8.dll
+   Copyright (C) 1996-2024 Anthony Green, Red Hat, Inc. and others
+   License: MIT License
+
+   Permission is hereby granted, free of charge, to any person obtaining a
+   copy of this software and associated documentation files (the "Software"),
+   to deal in the Software without restriction, including without limitation
+   the rights to use, copy, modify, merge, publish, distribute, sublicense,
+   and/or sell copies of the Software, and to permit persons to whom the
+   Software is furnished to do so, subject to the following conditions:
+
+   The above copyright notice and this permission notice shall be included in
+   all copies or substantial portions of the Software.
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+   OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+   FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+   DEALINGS IN THE SOFTWARE.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+5. Microsoft Visual C++ Runtime
+   Files: MSVCP140*.dll, VCRUNTIME140*.dll
+   Copyright (C) Microsoft Corporation
+   License: Microsoft Visual C++ Redistributable License
+
+   Distributed in accordance with the Microsoft Visual C++ Redistributable
+   license terms. See https://learn.microsoft.com/en-us/cpp/windows/redistribution-dll
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+6. Python
+   Files: python3.dll, python314.dll
+   Copyright (C) 2001-2024 Python Software Foundation
+   License: Python Software Foundation License 2.0 (PSF-2.0)
+
+   This application embeds the Python runtime. Source code and full
+   license text available at https://www.python.org/
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TeslaCam Viewer itself is released under the MIT License.
+See LICENSES/MIT.txt
