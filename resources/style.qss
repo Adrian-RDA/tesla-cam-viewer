@@ -1,0 +1,332 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   TeslaCam Viewer — OLED Dark Design System
+   Palette: Deep Black #080808, Surface #111, Accent #E31937 (Tesla Red)
+   Font: Segoe UI (Inter fallback)
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ─── Global reset ─────────────────────────────────────────────────────── */
+* {
+    font-family: "Inter", "Segoe UI", "SF Pro Display", sans-serif;
+    font-size: 12px;
+    color: #f0f0f0;
+}
+
+QMainWindow, QWidget {
+    background-color: #080808;
+}
+
+/* ─── Header bar (custom, replaces QToolBar) ────────────────────────────── */
+QWidget#headerBar {
+    background: #0c0c0c;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+QPushButton#headerButton {
+    background: transparent;
+    border: 1px solid #272727;
+    border-radius: 6px;
+    padding: 0 16px;
+    color: #909090;
+    font-size: 12px;
+    font-weight: 500;
+    min-width: 110px;
+}
+QPushButton#headerButton:hover {
+    background: #161616;
+    border-color: #e31937;
+    color: #f0f0f0;
+}
+QPushButton#headerButton:pressed {
+    background: #1a0306;
+    border-color: #e31937;
+    color: #e31937;
+}
+
+/* ─── Splitter ──────────────────────────────────────────────────────────── */
+QSplitter::handle {
+    background: #141414;
+    width: 1px;
+}
+QSplitter::handle:hover {
+    background: #e31937;
+}
+
+/* ─── Sidebar ───────────────────────────────────────────────────────────── */
+QLabel#sidebarHeader {
+    background: #0e0e0e;
+    color: #f0f0f0;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #1a1a1a;
+    padding: 0 12px;
+}
+
+QListWidget#eventList {
+    background: #0a0a0a;
+    border: none;
+    outline: none;
+    padding: 6px 4px;
+}
+
+QListWidget#eventList::item {
+    background: transparent;
+    border-radius: 8px;
+    padding: 0px;
+    margin-bottom: 2px;
+}
+QListWidget#eventList::item:hover:!selected {
+    background: #141414;
+    border-radius: 8px;
+}
+QListWidget#eventList::item:selected {
+    background: #140306;
+    border-radius: 8px;
+    border: 1px solid #e31937;
+}
+
+/* Cards and their labels must be transparent — no black background boxes */
+QListWidget#eventList QWidget {
+    background: transparent;
+}
+QListWidget#eventList QLabel {
+    background: transparent;
+}
+
+/* Event card labels */
+QLabel#eventTime {
+    color: #f0f0f0;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.2px;
+}
+QLabel#eventLocation {
+    color: #707070;
+    font-size: 10px;
+}
+QLabel#eventReason {
+    color: #e31937;
+    font-size: 10px;
+    font-weight: 600;
+}
+QLabel#eventDuration {
+    color: #424242;
+    font-size: 10px;
+}
+
+/* ─── Player grid area ──────────────────────────────────────────────────── */
+QLabel#cameraLabel {
+    background: rgba(8, 8, 8, 0.75);
+    color: #909090;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #181818;
+}
+
+/* ─── Timeline bar ──────────────────────────────────────────────────────── */
+QWidget#timelineBar {
+    background: #0a0a0a;
+    border-top: 1px solid #161616;
+}
+
+/* Scrubber */
+QSlider#timelineSlider {
+    height: 20px;
+}
+QSlider#timelineSlider::groove:horizontal {
+    background: #1a1a1a;
+    height: 4px;
+    border-radius: 2px;
+    margin: 0 2px;
+}
+QSlider#timelineSlider::sub-page:horizontal {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #a0101e, stop:1 #e31937);
+    border-radius: 2px;
+}
+QSlider#timelineSlider::add-page:horizontal {
+    background: #1a1a1a;
+    border-radius: 2px;
+}
+QSlider#timelineSlider::handle:horizontal {
+    background: #ffffff;
+    width: 14px;
+    height: 14px;
+    margin: -5px 0;
+    border-radius: 7px;
+    border: 2px solid #e31937;
+}
+QSlider#timelineSlider::handle:horizontal:hover {
+    background: #e31937;
+    border-color: #ff4060;
+    width: 16px;
+    height: 16px;
+    margin: -6px 0;
+    border-radius: 8px;
+}
+QSlider#timelineSlider::handle:horizontal:pressed {
+    background: #e31937;
+}
+
+/* Time label */
+QLabel#timeLabel {
+    color: #555555;
+    font-size: 11px;
+    font-family: "Consolas", "Fira Code", monospace;
+    letter-spacing: 0.5px;
+}
+
+/* ── Transport buttons (skip / step) ────────────────────────────────────── */
+QPushButton#transportButton {
+    background: #111111;
+    border: 1px solid #222222;
+    border-radius: 7px;
+    color: #707070;
+    font-size: 16px;       /* bigger icons */
+    font-weight: 500;
+    min-width: 38px;
+    min-height: 32px;
+}
+QPushButton#transportButton:hover {
+    background: #1a1a1a;
+    border-color: #383838;
+    color: #d0d0d0;
+}
+QPushButton#transportButton:pressed {
+    background: #1a0306;
+    border-color: #e31937;
+    color: #e31937;
+}
+
+/* ── Play / Pause button ────────────────────────────────────────────────── */
+QPushButton#playButton {
+    background: #e31937;
+    border: none;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 18px;       /* bigger play icon */
+    font-weight: 700;
+    min-width: 44px;
+    min-height: 36px;
+}
+QPushButton#playButton:hover {
+    background: #ff2f4a;
+    color: #ffffff;
+}
+QPushButton#playButton:pressed {
+    background: #a0101e;
+    color: #ffffff;
+}
+
+/* ── Speed segmented control ────────────────────────────────────────────── */
+QPushButton#speedSegBtn {
+    background: #111111;
+    border: 1px solid #1e1e1e;
+    border-radius: 5px;
+    color: #555555;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 0 6px;
+    min-height: 26px;
+}
+QPushButton#speedSegBtn:hover:!checked {
+    background: #1a1a1a;
+    border-color: #333333;
+    color: #909090;
+}
+QPushButton#speedSegBtn:checked {
+    background: #1a0306;
+    border: 1px solid #e31937;
+    color: #e31937;
+}
+QPushButton#speedSegBtn:pressed {
+    background: #e31937;
+    border-color: #e31937;
+    color: #ffffff;
+}
+
+/* ── Maximised-camera badge (pill in header centre) ─────────────────────── */
+QWidget#camBadge {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 14px;
+}
+
+QLabel#camNameLabel {
+    color: #f0f0f0;
+    font-size: 12px;
+    font-weight: 700;
+    background: transparent;
+}
+
+QLabel#camSepLabel {
+    color: #444444;
+    font-size: 13px;
+    background: transparent;
+}
+
+QLabel#camHintLabel {
+    color: #606060;
+    font-size: 11px;
+    background: transparent;
+}
+
+/* ─── Status bar ────────────────────────────────────────────────────────── */
+QStatusBar {
+    background: #080808;
+    color: #404040;
+    border-top: 1px solid #141414;
+    font-size: 11px;
+    padding: 0 8px;
+}
+
+QProgressBar {
+    background: #141414;
+    border: none;
+    border-radius: 2px;
+    height: 3px;
+    text-align: center;
+    color: transparent;
+}
+QProgressBar::chunk {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #a0101e, stop:1 #e31937);
+    border-radius: 2px;
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────────────────────── */
+QScrollBar:vertical {
+    background: transparent;
+    width: 4px;
+    border: none;
+    margin: 0;
+}
+QScrollBar::handle:vertical {
+    background: #2a2a2a;
+    border-radius: 2px;
+    min-height: 24px;
+}
+QScrollBar::handle:vertical:hover {
+    background: #e31937;
+}
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0;
+}
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical {
+    background: transparent;
+}
+
+/* ─── Tooltip ───────────────────────────────────────────────────────────── */
+QToolTip {
+    background: #161616;
+    color: #c0c0c0;
+    border: 1px solid #2a2a2a;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 11px;
+}

@@ -1,0 +1,58 @@
+name: Build Windows Executable
+
+on:
+  push:
+    tags:
+      - "v*"          # trigger on version tags: v1.0.0, v1.2.3, ...
+  workflow_dispatch:  # allow manual trigger from GitHub UI
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"   # 3.12 has the best PyInstaller compatibility
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements-build.txt
+
+      - name: Convert icon PNG -> ICO
+        run: |
+          python -c "
+          from PIL import Image
+          img = Image.open('resources/icon.png').convert('RGBA')
+          sizes = [(16,16),(32,32),(48,48),(64,64),(128,128),(256,256)]
+          imgs = [img.resize(s, Image.LANCZOS) for s in sizes]
+          imgs[0].save('resources/icon.ico', format='ICO', sizes=sizes, append_images=imgs[1:])
+          "
+
+      - name: Build with PyInstaller
+        run: python -m PyInstaller TeslaCamViewer.spec --noconfirm
+
+      - name: Zip output folder
+        run: |
+          $version = "${{ github.ref_name }}"
+          Compress-Archive -Path dist\TeslaCamViewer\* -DestinationPath "TeslaCamViewer-$version-windows.zip"
+        shell: pwsh
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: TeslaCamViewer-windows
+          path: TeslaCamViewer-*.zip
+          retention-days: 30
+
+      - name: Create GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: TeslaCamViewer-*.zip
+          generate_release_notes: true

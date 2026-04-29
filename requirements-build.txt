@@ -1,0 +1,6 @@
+# Runtime
+PySide6>=6.7.0
+
+# Build tooling (not needed at runtime)
+pyinstaller>=6.0
+pillow>=10.0
