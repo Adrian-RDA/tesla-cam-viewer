@@ -22,6 +22,7 @@ from core.event import TeslaEvent
 from core.scanner import Scanner
 from core.sync_controller import SyncController
 from ui.event_list import EventList
+from ui.export_dialog import ExportDialog
 from ui.grid_view import GridView
 from ui.icons import make_icon
 from ui.timeline import Timeline
@@ -86,6 +87,16 @@ class MainWindow(QMainWindow):
         self._btn_open.setIcon(make_icon("folder", 15, "#707070"))
         self._btn_open.clicked.connect(self._open_folder)
         h_layout.addWidget(self._btn_open)
+
+        # Export button
+        self._btn_export = QPushButton("  Exportieren")
+        self._btn_export.setObjectName("headerButton")
+        self._btn_export.setCursor(Qt.CursorShape.PointingHandCursor)
+        self._btn_export.setFixedHeight(30)
+        self._btn_export.setIcon(make_icon("export", 15, "#707070"))
+        self._btn_export.setEnabled(False)   # enabled once an event is loaded
+        self._btn_export.clicked.connect(self._open_export_dialog)
+        h_layout.addWidget(self._btn_export)
 
         h_layout.addStretch()
 
@@ -246,9 +257,26 @@ class MainWindow(QMainWindow):
         self._timeline.set_duration(event.duration_seconds)
         self._timeline.set_event_marker(event.event_offset_seconds)
         self._timeline.reset()
+        self._btn_export.setEnabled(True)
         self._status.showMessage(
             f"{event.display_time}  ·  {event.display_location}  ·  {event.trigger_label}"
         )
+
+    # ------------------------------------------------------------------
+    # Export dialog
+    # ------------------------------------------------------------------
+
+    def _open_export_dialog(self) -> None:
+        if self._current_event is None:
+            return
+        self._sync.pause_all()
+        dlg = ExportDialog(
+            self._current_event,
+            current_pos=self._sync.master_position,
+            sync=self._sync,
+            parent=self,
+        )
+        dlg.exec()
 
     # ------------------------------------------------------------------
     # Camera maximise / restore

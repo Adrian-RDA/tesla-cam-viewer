@@ -1,5 +1,6 @@
 # Runtime
 PySide6>=6.7.0
+imageio-ffmpeg>=0.5.1
 
 # Build tooling (not needed at runtime)
 pyinstaller>=6.0

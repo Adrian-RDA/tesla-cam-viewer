@@ -335,3 +335,268 @@ QToolTip {
     padding: 4px 8px;
     font-size: 11px;
 }
+
+/* ─── Export dialog ─────────────────────────────────────────────────────── */
+QDialog#exportDialog {
+    background: #0e0e0e;
+    border: 1px solid #1e1e1e;
+}
+
+/*
+ * Make plain QWidget layout containers transparent so they show the
+ * #0e0e0e dialog background instead of inheriting the global #080808.
+ * Specifically styled widgets (QPushButton, QComboBox, …) override this
+ * because their rules appear later and share the same CSS specificity.
+ */
+QDialog#exportDialog QWidget {
+    background: transparent;
+}
+
+QLabel#exportTitle {
+    color: #f0f0f0;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+
+QLabel#exportSectionLabel {
+    color: #484848;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+QLabel#exportBodyLabel {
+    color: #808080;
+    font-size: 11px;
+}
+
+QLabel#exportTimeLabel {
+    color: #909090;
+    font-size: 11px;
+    font-family: "Consolas", "Fira Code", monospace;
+}
+
+QLabel#exportDurLabel {
+    color: #484848;
+    font-size: 10px;
+}
+
+QLabel#exportPathLabel {
+    color: #606060;
+    font-size: 10px;
+}
+
+QLabel#exportStatusLabel {
+    color: #606060;
+    font-size: 10px;
+}
+
+QWidget#exportDivider {
+    background: #1a1a1a;
+}
+
+/* Mode buttons */
+QPushButton#exportModeBtn {
+    background: #111111;
+    border: 1px solid #1e1e1e;
+    border-radius: 6px;
+    color: #585858;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 0 12px;
+}
+QPushButton#exportModeBtn:hover:!checked {
+    background: #181818;
+    border-color: #333333;
+    color: #909090;
+}
+QPushButton#exportModeBtn:checked {
+    background: #140306;
+    border: 1px solid #e31937;
+    color: #e31937;
+    font-weight: 600;
+}
+
+/* Preset buttons */
+QPushButton#exportPresetBtn {
+    background: #111111;
+    border: 1px solid #1e1e1e;
+    border-radius: 5px;
+    color: #606060;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 0 10px;
+}
+QPushButton#exportPresetBtn:hover {
+    background: #181818;
+    border-color: #303030;
+    color: #c0c0c0;
+}
+QPushButton#exportPresetBtn:pressed {
+    background: #1a0306;
+    border-color: #e31937;
+    color: #e31937;
+}
+QPushButton#exportPresetBtn:disabled {
+    color: #2a2a2a;
+    border-color: #181818;
+}
+
+/* Small utility button (e.g. "Ändern") */
+QPushButton#exportSmallBtn {
+    background: #111111;
+    border: 1px solid #1e1e1e;
+    border-radius: 5px;
+    color: #606060;
+    font-size: 10px;
+    padding: 0 10px;
+}
+QPushButton#exportSmallBtn:hover {
+    background: #181818;
+    border-color: #303030;
+    color: #c0c0c0;
+}
+
+/* Cancel button */
+QPushButton#exportCancelBtn {
+    background: #111111;
+    border: 1px solid #222222;
+    border-radius: 7px;
+    color: #606060;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 0 20px;
+}
+QPushButton#exportCancelBtn:hover {
+    background: #1a1a1a;
+    border-color: #383838;
+    color: #c0c0c0;
+}
+QPushButton#exportCancelBtn:pressed {
+    background: #0e0e0e;
+}
+
+/* Start export button */
+QPushButton#exportStartBtn {
+    background: #e31937;
+    border: none;
+    border-radius: 7px;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 0 24px;
+}
+QPushButton#exportStartBtn:hover {
+    background: #ff2f4a;
+}
+QPushButton#exportStartBtn:pressed {
+    background: #a0101e;
+}
+QPushButton#exportStartBtn:disabled {
+    background: #3a0810;
+    color: #7a2030;
+}
+
+/* Checkbox */
+QCheckBox#exportCheck {
+    color: #909090;
+    font-size: 11px;
+    spacing: 6px;
+}
+QCheckBox#exportCheck::indicator {
+    width: 14px;
+    height: 14px;
+    border: 1px solid #2e2e2e;
+    border-radius: 3px;
+    background: #111111;
+}
+QCheckBox#exportCheck::indicator:checked {
+    background: #e31937;
+    border-color: #e31937;
+}
+QCheckBox#exportCheck:disabled {
+    color: #383838;
+}
+QCheckBox#exportCheck::indicator:disabled {
+    background: #1a1a1a;
+    border-color: #222222;
+}
+
+/* Radio buttons */
+QRadioButton#exportRadio {
+    color: #909090;
+    font-size: 11px;
+    spacing: 6px;
+}
+QRadioButton#exportRadio::indicator {
+    width: 13px;
+    height: 13px;
+    border: 1px solid #2e2e2e;
+    border-radius: 7px;
+    background: #111111;
+}
+QRadioButton#exportRadio::indicator:checked {
+    background: #e31937;
+    border-color: #e31937;
+}
+
+/* Combo box */
+QComboBox#exportCombo {
+    background: #111111;
+    border: 1px solid #1e1e1e;
+    border-radius: 5px;
+    color: #d0d0d0;
+    font-size: 11px;
+    padding: 0 8px;
+    min-width: 110px;
+}
+QComboBox#exportCombo:hover {
+    border-color: #333333;
+}
+QComboBox#exportCombo::drop-down {
+    border: none;
+    width: 20px;
+}
+QComboBox QAbstractItemView {
+    background: #111111;
+    border: 1px solid #222222;
+    color: #d0d0d0;
+    selection-background-color: #1a0306;
+    selection-color: #e31937;
+    outline: none;
+}
+
+/* Progress bar */
+QProgressBar#exportProgress {
+    background: #1a1a1a;
+    border: none;
+    border-radius: 3px;
+}
+QProgressBar#exportProgress::chunk {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #a0101e, stop:1 #e31937);
+    border-radius: 3px;
+}
+
+/* Preview thumbnails */
+QLabel#exportPreviewLabel {
+    background: #111111;
+    border: 1px solid #1e1e1e;
+    border-radius: 4px;
+    color: #383838;
+    font-size: 10px;
+}
+
+QLabel#exportPreviewCaption {
+    color: #484848;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+QLabel#exportHintLabel {
+    color: #383838;
+    font-size: 10px;
+    font-style: italic;
+}

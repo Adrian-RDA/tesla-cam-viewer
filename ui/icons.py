@@ -49,6 +49,14 @@ _SVG_PANEL_LEFT = """
   <line x1="9" y1="3.5" x2="9" y2="20.5"/>
 </svg>"""
 
+# Export / download arrow icon
+_SVG_EXPORT = """
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+     stroke="{c}" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M12 3v12m0 0-4-4m4 4 4-4"/>
+  <path d="M3 17v2a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-2"/>
+</svg>"""
+
 # Public registry
 ICONS: dict[str, str] = {
     "skip_back":   _SVG_SKIP_BACK,
@@ -57,6 +65,7 @@ ICONS: dict[str, str] = {
     "pause":       _SVG_PAUSE,
     "folder":      _SVG_FOLDER,
     "panel_left":  _SVG_PANEL_LEFT,
+    "export":      _SVG_EXPORT,
 }
 
 

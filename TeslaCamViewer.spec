@@ -8,10 +8,18 @@ import sys
 
 ROOT = Path(SPECPATH)
 
+# Bundle the imageio_ffmpeg binary so the export feature works without system FFmpeg
+try:
+    import imageio_ffmpeg as _iio
+    _ffmpeg_exe = Path(_iio.get_ffmpeg_exe())
+    _extra_binaries = [(str(_ffmpeg_exe), "imageio_ffmpeg/binaries")]
+except Exception:
+    _extra_binaries = []
+
 a = Analysis(
     [str(ROOT / "main.py")],
     pathex=[str(ROOT)],
-    binaries=[],
+    binaries=_extra_binaries,
     datas=[
         # Ship the QSS theme and app icon alongside the executable
         (str(ROOT / "resources" / "style.qss"), "resources"),
